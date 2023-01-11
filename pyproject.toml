@@ -1,0 +1,11 @@
+[project]
+name = "volya_staking_stats_discord_bot"
+description = "Simple bot that displays staking statistics for Volya staking pool as a discord voice channel."
+version = "1.0.0"
+authors = [
+    { name = "Rick Staa", email = "rick.staa@outlook.com" }
+]
+dependencies = [
+    "discord.py",
+    "solana",
+]
