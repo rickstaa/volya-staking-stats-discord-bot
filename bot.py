@@ -3,6 +3,8 @@
 import logging
 import os
 import re
+import base64
+import base58
 
 from discord import Client, Intents
 from discord.ext import tasks
@@ -25,7 +27,7 @@ def get_staking_data():
     resp = QUICKNODE_SOLANA_CLIENT.get_account_info(
         PublicKey(os.getenv("STAKING_PROGRAM"))
     )
-    print(resp)  # TODO: Find a way to decode the program data.
+    print(base64.b64decode(resp.value.data))  # TODO: Find a way to decode the program data.
     return 10  # FIXME: Dummy value.
 
 
@@ -43,7 +45,7 @@ class StakingStatsUpdateBot(Client):
             logging.error(f"Channel {STAKE_STATS_CHANNEL_ID} not found.")
             return
 
-        # Check if channel is the right type
+        # Check if channel is the right type``
         if self._channel.type.name != "voice":
             logging.error(f"Channel {STAKE_STATS_CHANNEL_ID} is not a voice channel.")
             return

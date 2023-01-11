@@ -8,4 +8,5 @@ authors = [
 dependencies = [
     "discord.py",
     "solana",
+    "base58",
 ]
